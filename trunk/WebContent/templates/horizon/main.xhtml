@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html">
+
+	<h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+            <meta http-equiv="pragma" content="no-cache" />
+			<meta http-equiv="cache-control" content="no-cache" />
+			<meta http-equiv="expires" content="0" />
+			<meta http-equiv="keywords" content="" />
+            <title></title>
+        </f:facet>
+
+		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/includes/styles/application.css" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/includes/styles/component.css" />
+
+		<ui:insert name="head"></ui:insert>
+
+	</h:head>
+
+	<h:body>
+	
+	 <f:view>
+
+	<h:form id="appForm" prependId="false">
+		<p:layout fullPage="true">  
+  
+		    <p:layoutUnit position="north" size="100" header="Top" resizable="true" closable="true" collapsible="true">  
+		        <h:outputText value="Top unit content." />  
+		    </p:layoutUnit>  
+		  
+		    <p:layoutUnit position="south" size="100" header="Bottom" resizable="true" closable="true" collapsible="true">  
+		        <h:outputText value="South unit content." />  
+		    </p:layoutUnit>  
+		  
+		    <p:layoutUnit position="west" size="200" header="Left" resizable="true" closable="true" collapsible="true">  
+		    </p:layoutUnit>  
+		  
+		    <p:layoutUnit position="east" size="200" header="Right" resizable="true" closable="true" collapsible="true" effect="drop">  
+		        <h:outputText value="Right unit content." />  
+		    </p:layoutUnit>  
+		  
+		    <p:layoutUnit position="center">  
+		        <h:form>  
+		            This fullPage layout consists of five different layoutUnits which are resizable and closable by default.
+		            <ui:insert name="content" />  
+		  
+		        </h:form>  
+		    </p:layoutUnit>  
+		  
+		</p:layout> 
+	</h:form>
+	
+	</f:view>
+	</h:body>
+
+
+</f:view>
+</html>

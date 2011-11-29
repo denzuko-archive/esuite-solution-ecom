@@ -1,0 +1,40 @@
+.ui-widget { font-family: Trebuchet MS, Verdana,Arial,sans-serif; font-size: 0.70em; }
+/*.ui-widget .ui-widget { font-size: 0.70em; }*/
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Trebuchet MS, Verdana,Arial,sans-serif; font-size: 0.70em; }
+
+.ui-layout, .ui-layout-doc, .ui-layout-unit, .ui-layout-wrap, .ui-layout-bd, .ui-layout-hd, .ui-layout-pane 
+{ 
+	border: none !important;
+	padding: 0em;
+}
+/*
+.ui-layout-pane-south, .ui-layout-unit-content, .ui-layout-south.
+.ui-layout, .ui-layout-north, .ui-layout-unit-content, .ui-layout-south {
+	z-index:0 !important;
+	overflow:auto;
+}
+*/
+
+.center-align {
+	align:center;
+	text-align: center;
+}
+
+.ui-growl { right:2%; top:60%; }
+
+ .ui-datatable .ui-datatable-data .even-row td {
+     background-color:#efffe6;
+     border-right: solid 0px #4e6769; 
+ }
+
+ .ui-datatable .ui-datatable-data .odd-row td { 
+     background-color:#ffffff;
+     border-right: solid 0px #4e6769; 
+ }
+ 
+ 
+ .layoutUnitStyle {
+ 	border-style: none;
+ 	overflow: auto;
+ 	width: 40%;
+ }
