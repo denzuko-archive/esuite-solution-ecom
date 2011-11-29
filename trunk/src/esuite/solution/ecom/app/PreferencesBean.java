@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import com.ocpsoft.pretty.faces.annotation.URLMapping;
 
 @Scope("session")
-@Component("PreferencesBean")
+@Component("Preferences")
 @URLMapping(id="pref", pattern="/u/pref/", viewId="/userPreferences.html")
 public class PreferencesBean implements PreferencesBeanProxy {
 
