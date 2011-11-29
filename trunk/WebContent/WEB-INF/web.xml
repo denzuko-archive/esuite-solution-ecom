@@ -1,12 +1,336 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-  <display-name>esuite-solution-ecom</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<context-param>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>server</param-value>
+	</context-param>
+	
+	<context-param>
+	  <param-name>com.ocpsoft.pretty.BASE_PACKAGES</param-name>
+	  <param-value>esuite.solution.horizon</param-value>
+	</context-param>
+	
+	<context-param>
+	   <param-name>com.ocpsoft.pretty.SCAN_LIB_DIRECTORY</param-name>
+	   <param-value>false</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/classes/logging.properties</param-value>
+	</context-param>
+	<!-- /WEB-INF/classes/log4j.properties, classpath:log4j.properties -->
+	
+	<listener>
+	     <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+	
+	<context-param>
+	    <param-name>com.sun.faces.allowTextChildren</param-name>
+	    <param-value>true</param-value>
+	</context-param>
+	
+	<listener>
+		<listener-class>
+			org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>
+			org.springframework.web.util.IntrospectorCleanupListener
+		</listener-class>
+	</listener>
+	
+	<context-param>
+		<param-name>com.sun.faces.validateXml</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>com.sun.faces.expressionFactory</param-name>
+		<param-value>com.sun.el.ExpressionFactoryImpl</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Production</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>javax.faces.CONFIG_FILES</param-name>
+		<param-value>
+            /WEB-INF/app-config.xml
+    </param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>primefaces.PRIVATE_CAPTCHA_KEY</param-name>
+		<param-value>6LfwZwoAAAAAAEhRyntKF1PBzysAJLzqp2v-GMRR</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>primefaces.PUBLIC_CAPTCHA_KEY</param-name>
+		<param-value>6LfwZwoAAAAAAI-oUHpdvRnkMfu9fXQHxc0P7IBu</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>blitzer</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	
+<!-- 	
+	<context-param>
+		<param-name>primefaces.PUSH_SERVER_URL</param-name>
+		<param-value>ws://www.primefaces.org:9090/prime-pushserver</param-value>
+	</context-param>
+ 
+	<filter>
+		<filter-name>Character Encoding Filter</filter-name>
+		<filter-class>org.primefaces.examples.filter.CharacterEncodingFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>Character Encoding Filter</filter-name>
+		<servlet-name>Faces Servlet</servlet-name>
+	</filter-mapping>
+-->	
+	
+	<!-- 
+	<filter>
+		<filter-name>hibernateFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>hibernateFilter</filter-name>
+		<!- put here your own path for your Tapestry url-pattern ->
+		<url-pattern>/</url-pattern>
+	</filter-mapping>
+	 -->
+	
+	<filter>
+		<filter-name>Pretty Filter</filter-name>
+		<filter-class>com.ocpsoft.pretty.PrettyFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>Pretty Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>PrimeFaces FileUpload Filter</filter-name>
+		<filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>PrimeFaces FileUpload Filter</filter-name>
+		<servlet-name>Faces Servlet</servlet-name>
+	</filter-mapping>
+	
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<description>generated-servlet</description>
+		<servlet-name>epack.suite.web.solution Servlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				classpath:ecom-web-context.xml
+			</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>AppStartupServlet</servlet-name>
+		<servlet-class>esuite.solution.horizon.startup.ApplicationStartupServlet</servlet-class>
+		<init-param>
+			<param-name>log4j</param-name>
+			<param-value>\WEB-INF\classes\logging.properties</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.faces</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.jspx</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<!--
+		MIME Type Definitions
+		Certain application servers include a limited amount of filetype mappings; this
+		list is included to augment what is shipped with the application server.
+	-->
+	<mime-mapping>
+		<extension>xml</extension>
+		<mime-type>text/xml</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>css</extension>
+		<mime-type>text/css</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>doc</extension>
+		<mime-type>application/msword</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>docm</extension>
+		<mime-type>application/vnd.ms-word.document.macroEnabled.12</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>docx</extension>
+		<mime-type>application/vnd.openxmlformats-officedocument.wordprocessingml.document</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>dotm</extension>
+		<mime-type>application/vnd.ms-word.template.macroEnabled.12</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>dotx</extension>
+		<mime-type>application/vnd.openxmlformats-officedocument.wordprocessingml.template</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>xlsm</extension>
+		<mime-type>application/vnd.ms-excel.sheet.macroEnabled.12</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>xlsx</extension>
+		<mime-type>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>xltm</extension>
+		<mime-type>application/vnd.ms-excel.template.macroEnabled.12</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>xltx</extension>
+		<mime-type>application/vnd.openxmlformats-officedocument.spreadsheetml.template</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>xlsb</extension>
+		<mime-type>application/vnd.ms-excel.sheet.binary.macroEnabled.12</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>pptx</extension>
+		<mime-type>application/vnd.openxmlformats-officedocument.presentationml.presentation</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>pptm</extension>
+		<mime-type>application/vnd.ms-powerpoint.presentation.macroEnabled.12</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>ppsx</extension>
+		<mime-type>application/vnd.openxmlformats-officedocument.presentationml.slideshow</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>ppsm</extension>
+		<mime-type>application/vnd.ms-powerpoint.slideshow.macroEnabled.12</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>potx</extension>
+		<mime-type>application/vnd.openxmlformats-officedocument.presentationml.template</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>potm</extension>
+		<mime-type>application/vnd.ms-powerpoint.template.macroEnabled.12</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>gz</extension>
+		<mime-type>application/x-gzip</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>htc</extension>
+		<mime-type>text/x-component</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>js</extension>
+		<mime-type>text/javascript</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>wsdl</extension>
+		<mime-type>text/xml</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>pdf</extension>
+		<mime-type>application/pdf</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>tif</extension>
+		<mime-type>image/tiff</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>tiff</extension>
+		<mime-type>image/tiff</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>png</extension>
+		<mime-type>image/png</mime-type>
+	</mime-mapping>
+	<!-- 12-Oct-05 OLSOK
+		The Servlet 2.4 xsd contains a validation pattern for
+		mime-type that does not permit a '+' character. WebLogic 9
+		validates the web.xml file against the official schema
+		(irrespective of what is specified in the web.xml file itself)
+		and refuses to deploy the application. PegaRULES v5.1
+		special cases the svg and svgz extensions in static
+		content handling.
+		21-Apr-11 OLSOK
+		The original web-app_2_4.xsd in javax/servlet/resources (9/3/2003) constrains mime-type
+		with the pattern: <xsd:pattern value="[\p{L}\-\p{Nd}]+/[\p{L}\-\p{Nd}\.]+"/>
+		Later versions of the .xsd (at some time prior to 2008) constrain mime-type with the pattern
+		<xsd:pattern value="[^\p{Cc}^\s]+/[^\p{Cc}^\s]+"/> 
+	<mime-mapping>
+		<extension>svg</extension>
+		<mime-type>image/svg+xml</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>svgz</extension>
+		<mime-type>image/svg+xml</mime-type>
+	</mime-mapping>
+	-->
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	
 </web-app>
