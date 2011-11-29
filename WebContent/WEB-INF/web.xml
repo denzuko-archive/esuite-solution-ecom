@@ -82,7 +82,7 @@
 	
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
-		<param-value>blitzer</param-value>
+		<param-value>#{Preferences.userPref.theme}</param-value>
 	</context-param>
 	
 	<context-param>
@@ -163,7 +163,7 @@
 
 	<servlet>
 		<servlet-name>AppStartupServlet</servlet-name>
-		<servlet-class>esuite.solution.horizon.startup.ApplicationStartupServlet</servlet-class>
+		<servlet-class>esuite.solution.ecom.startup.ApplicationStartupServlet</servlet-class>
 		<init-param>
 			<param-name>log4j</param-name>
 			<param-value>\WEB-INF\classes\logging.properties</param-value>
