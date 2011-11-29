@@ -1,0 +1,131 @@
+img {
+	border-style: none !important; 
+}
+
+/*
+.theme-button {
+    overflow: auto;
+    width:99%;
+}
+*/
+.theme-option {
+    overflow: auto;
+    height:400px;
+    //width:300px;
+}
+
+/* Header */
+.logo {
+	margin: 0 auto;
+	padding: 25px 10px 0 10px;
+	font-family: Magneto, Tempus Sans ITC;
+	font-size: 1.6em;
+	font-weight: bold;
+}
+
+.logotag {
+	margin: 0 auto;
+	padding: 25px 10px 0 10px;
+	font-family: Tempus Sans ITC;
+	font-size: 1.1em;
+	font-weight: normal; 
+}
+
+#logo h1, #logo p {
+	float: left;
+	margin: 0;
+}
+
+#logo h1 {
+	padding: 0 0 0 0;
+	letter-spacing: -1px;
+	font-weight: normal;
+	font-size: 3em;
+}
+
+#logo p {
+	text-transform: uppercase;
+	padding: 47px 0 0 3px;
+	font-size: 10px;
+	color: #FFFFFF;
+}
+
+#logo a {
+	border: none;
+	text-decoration: none;
+	color: #DC8700;
+}
+
+
+
+/* Footer */
+
+#footer {
+	width: 99%;
+	height: 9px;
+	margin: 0 auto;
+	padding: 5px 5px;
+}
+
+#footer p {
+	margin: 0;
+	padding: 0px 0 0 0;
+	text-align: center;
+	font-size: smaller;
+}
+
+#footer a {
+}
+
+#footer .link {
+	float: left;
+}
+
+#footer .copyright {
+	float: right;
+}
+
+
+.recordError {
+	background-color: transparent !important;
+	background-image: none !important;
+	color: #ff0000 !important;
+}
+
+.recordInfo {
+	background-color: transparent !important;
+	background-image: none !important;
+	//color: #ff0000 !important;
+}
+
+.recordWarn {
+	background-color: transparent !important;
+	background-image: none !important;
+	//color: #00ff00 !important;
+}
+
+.snapImg {
+	width: 20px;
+	height: 20px;
+}
+
+.login-panel {
+	//width: 100%;
+}
+
+.acc_menu {
+	background-color: transparent !important;
+	border-color: transparent !important;
+}
+
+.notifier {
+	z-index: 9999 !important;
+	overflow: auto;
+	height: 50%;
+	width: auto;
+	min-width: 5%;
+}
+
+.mymenu {
+	overflow: auto;
+}

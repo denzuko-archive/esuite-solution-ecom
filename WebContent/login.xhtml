@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pretty="http://ocpsoft.com/prettyfaces"
+	template="/templates/#{PreferencesBean.applicationPref.appTemplate}/main.xhtml">
+
+	<ui:define name="content">
+		<p:panel styleClass="login-panel">
+			<f:facet name="header">
+				<center><h:outputText
+					value="ESuite ERP Application Sign-In" /></center>
+			</f:facet>
+			<f:facet name="footer">
+				<h:panelGrid columns="1">
+					<h:outputText value="demo/demo - Demonstration purpose" />
+					<h:panelGroup>
+						<h:outputText value="Don't have any Horizon Account? " />
+						<p:commandButton value="Click here ..."
+							update=":form:display, accountCreatePanel" />
+					</h:panelGroup>
+				</h:panelGrid>
+			</f:facet>
+			<h:panelGrid columns="2" id="login">
+				<h:outputText value="User ID" />
+				<p:inputText value="#{UserBean.userProfile.userID}" />
+
+				<h:outputText value="Password" />
+				<p:password value="#{UserBean.userProfile.userPassword}"
+					feedback="false" />
+
+				<p:commandButton ajax="false" value="Sign-In"
+					image="ui-icon ui-icon-person" action="#{UserBean.userProfile.performLogin()}"
+					update=":form:display, messages" />
+				<h:panelGroup />
+
+				<p:commandLink ajax="false" value="Forgot User ID"
+					update=":form:display, appForm" />
+				<h:panelGroup />
+
+				<p:commandLink ajax="false" value="Forgot Password"
+					update=":form:display, appForm" />
+				<h:panelGroup />
+				
+				<pretty:urlbuffer var="url" mappingId="barcode" >
+				  <f:param value="289667" />
+				</pretty:urlbuffer>
+				<img src="#{url}" alt="barcode" />
+				
+
+			</h:panelGrid>
+		</p:panel>
+	</ui:define>
+	
+</ui:composition>
