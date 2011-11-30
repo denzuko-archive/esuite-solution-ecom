@@ -3,11 +3,16 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	template="/templates/#{PreferencesBean.applicationPref.appTemplate}/main.xhtml">
+	xmlns:c="http://java.sun.com/jstl/core"
+	template="/templates/#{Preferences.applicationPref.ecomTemplate}/main.xhtml">
 
 	<ui:define name="content">
-	Welcome
-	<h:outputText value="#{RequestBean.currentPostId}" />
+	
+		<ul>
+			<li>Increase Conversions with Search Options</li>
+			Welcome
+		</ul>
+
 	</ui:define>
 	
 </ui:composition>

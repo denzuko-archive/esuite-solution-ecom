@@ -8,6 +8,9 @@ img {
     width:99%;
 }
 */
+
+
+
 .theme-option {
     overflow: auto;
     height:400px;
@@ -121,11 +124,20 @@ img {
 .notifier {
 	z-index: 9999 !important;
 	overflow: auto;
-	height: 50%;
-	width: auto;
+	height: 30%;
+	width: 100%;
 	min-width: 5%;
 }
 
 .mymenu {
 	overflow: auto;
+}
+
+
+.main-layout {
+	min-width:400px;
+	min-height:1000px;
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 0px;
 }
