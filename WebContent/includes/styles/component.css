@@ -2,6 +2,7 @@
 /*.ui-widget .ui-widget { font-size: 0.70em; }*/
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Trebuchet MS, Verdana,Arial,sans-serif; font-size: 0.70em; }
 
+/*
 .ui-layout, .ui-layout-doc, .ui-layout-unit, .ui-layout-wrap, .ui-layout-bd, .ui-layout-hd, .ui-layout-pane 
 { 
 	border: none !important;
@@ -12,6 +13,13 @@
 .ui-layout, .ui-layout-north, .ui-layout-unit-content, .ui-layout-south {
 	z-index:0 !important;
 	overflow:auto;
+}
+
+
+.ui-layout-center, ui-layout-unit-content {
+		padding-left: 10px;
+		padding-right: 10px;
+		background-color: transparent;	
 }
 */
 
@@ -34,7 +42,8 @@
  
  
  .layoutUnitStyle {
- 	border-style: none;
+ 	border-style: solid;
+ 	border: 1em;
  	overflow: auto;
  	width: 40%;
  }

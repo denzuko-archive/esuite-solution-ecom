@@ -17,46 +17,301 @@
 			<meta http-equiv="keywords" content="" />
             <title></title>
         </f:facet>
+        
+        
+        <link rel="stylesheet" href="#{request.contextPath}/css/menumatic/MenuMatic.css" type="text/css" media="screen" charset="utf-8" />
+		<!--[if lt IE 7]>
+			<link rel="stylesheet" href="#{request.contextPath}/css/menumatic/MenuMatic-ie6.css" type="text/css" media="screen" charset="utf-8" />
+		<![endif]-->
+		
+		<link rel="stylesheet" href="#{request.contextPath}/css/FixedNavigation.css" type="text/css" charset="utf-8"/>
+		<script type="text/javascript" src="#{request.contextPath}/js/jquery.blockUI.js?v2.38"></script>
+		<!-- 
+		<script type="text/javascript" src="#{request.contextPath}/js/jquery.layout-latest.js"></script>
+		 -->
+		
+		
+		<link href="#{request.contextPath}/plugin/megamenu/css/skins/black.css" rel="stylesheet" type="text/css" />
+		<link href="#{request.contextPath}/plugin/megamenu/css/skins/grey.css" rel="stylesheet" type="text/css" />
+		<link href="#{request.contextPath}/plugin/megamenu/css/skins/blue.css" rel="stylesheet" type="text/css" />
+		<link href="#{request.contextPath}/plugin/megamenu/css/skins/green.css" rel="stylesheet" type="text/css" />
+		<link href="#{request.contextPath}/plugin/megamenu/css/skins/light_blue.css" rel="stylesheet" type="text/css" />
+		<link href="#{request.contextPath}/plugin/megamenu/css/skins/orange.css" rel="stylesheet" type="text/css" />
+		<link href="#{request.contextPath}/plugin/megamenu/css/skins/red.css" rel="stylesheet" type="text/css" />
+		<link href="#{request.contextPath}/plugin/megamenu/css/skins/white.css" rel="stylesheet" type="text/css" />
+		
+		<link href="#{request.contextPath}/plugin/megamenu/css/dcmegamenustyle.css" rel="stylesheet" type="text/css" />
+		<script type='text/javascript' src='#{request.contextPath}/plugin/megamenu/js/jquery.hoverIntent.minified.js'></script>
+		<script type='text/javascript' src='#{request.contextPath}/plugin/megamenu/js/jquery.dcmegamenu.1.3.3.js'></script>
+		
+		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/application.css" />
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/component.css" />
+		
+		<style>
+		
+		#background{
+			position:absolute; top: 2px; left: 0px; width: 20%; height: 95%; 
+			opacity:0.4;
+			filter:alpha(opacity=40); /* For IE8 and earlier */
+		}
+		
+		#background:hover {
+			position:absolute; top: 2px; left: 50px; width: 20%; height: 95%; 
+			opacity:1.0;
+			filter:alpha(opacity=100); /* For IE8 and earlier */
+		}
+		
+		#background1{
+			opacity:0.5;
+			filter:alpha(opacity=50); /* For IE8 and earlier */
+		}
+		
+		#background1:hover {
+			opacity:1.0;
+			filter:alpha(opacity=100); /* For IE8 and earlier */
+		}
+		
+		</style>		
+		
+		<script type="text/javascript">
+            $(function() {
+                $('#navigation a').stop().animate({'marginLeft':'-85px'},100);
 
-		<link type="text/css" rel="stylesheet" href="#{request.contextPath}/includes/styles/application.css" />
-        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/includes/styles/component.css" />
+                $('#navigation > li').hover(
+                    function () {
+                        $('a',$(this)).stop().animate({'marginLeft':'-2px'},200);
+                    },
+                    function () {
+                        $('a',$(this)).stop().animate({'marginLeft':'-85px'},200);
+                    }
+                );
+
+                $('#mega-menu-app').dcMegaMenu({
+            		rowItems: '3',
+            		speed: 'fast',
+            		effect: 'slide',
+            	});
+
+                //alert($('mainlayout').layout.id);
+
+                //alert(mainlayout.getManager());
+
+                //mainlayout.getManager().toggle('right');
+
+                //alert(mainlayoutVar);
+                //mainlayoutVar.getUnitByPosition('right').toggle();
+
+                //layout.getManager().toggle('right');
+                
+                //alert($('oLayout').getManager());
+
+                //var rightUnit = oLayout.getUnitByPosition("right");
+
+                //var myLayout = $("body").layout();
+                //alert(myLayout.getManager());
+
+                
+            });
+
+
+        </script>
+		
+		<ui:insert name="blockscript">
+		<script type="text/javascript">
+           function plugBlock() {
+               $.blockUI();
+           };
+
+           function unplugBlock() {
+               $.unblockUI();
+          };
+
+          function activeHLink() {
+        	  $.addClass("ui-state-disabled");
+          };
+       </script>
+		</ui:insert>
 
 		<ui:insert name="head"></ui:insert>
-
 	</h:head>
 
 	<h:body>
 	
 	 <f:view>
-
+	 
 	<h:form id="appForm" prependId="false">
-		<p:layout fullPage="true">  
-  
-		    <p:layoutUnit position="north" size="100" header="Top" resizable="true" closable="true" collapsible="true">  
-		        <h:outputText value="Top unit content." />  
-		    </p:layoutUnit>  
-		  
-		    <p:layoutUnit position="south" size="100" header="Bottom" resizable="true" closable="true" collapsible="true">  
-		        <h:outputText value="South unit content." />  
-		    </p:layoutUnit>  
-		  
-		    <p:layoutUnit position="west" size="200" header="Left" resizable="true" closable="true" collapsible="true">  
-		    </p:layoutUnit>  
-		  
-		    <p:layoutUnit position="east" size="200" header="Right" resizable="true" closable="true" collapsible="true" effect="drop">  
-		        <h:outputText value="Right unit content." />  
-		    </p:layoutUnit>  
-		  
-		    <p:layoutUnit position="center">  
-		        <h:form>  
-		            This fullPage layout consists of five different layoutUnits which are resizable and closable by default.
-		            <ui:insert name="content" />  
-		  
-		        </h:form>  
-		    </p:layoutUnit>  
-		  
-		</p:layout> 
-	</h:form>
+	
+		<ui:param name="east_unit" value="true" />
+		<ui:param name="east_size" value="*" />
+		<ui:param name="west_unit" value="true" />
+		<ui:param name="west_size" value="190" />
+		<ui:param name="north_unit" value="true" />
+		<ui:param name="north_size" value="70" />
+		<ui:param name="south_unit" value="true" />
+		<ui:param name="south_size" value="30" />
+		
+		
+		<ui:param name="ilayout" value="true" />
+		<ui:param name="ieast_unit" value="true" />
+		<ui:param name="ieast_size" value="*" />
+		<ui:param name="iwest_unit" value="true" />
+		<ui:param name="iwest_size" value="*" />
+		<ui:param name="inorth_unit" value="false" />
+		<ui:param name="inorth_size" value="*" />
+		<ui:param name="isouth_unit" value="true" />
+		<ui:param name="isouth_size" value="*" />
+
+		<ui:insert name="template-params" />
+		
+		<p:contextMenu rendered="false">  
+	        <p:menuitem value="Homepage" url="/" icon="ui-icon ui-icon-extlink"/>
+	        <p:menuitem value="User Preferences" url="/preferences/" icon="ui-icon ui-icon-wrench" />  
+	    </p:contextMenu>
+	    
+	    <p:idleMonitor timeout="500000" update="messages">  
+		    <p:ajax event="idle" listener="#{IdleMonitorController.idleListener('5 seconds')}" update="messages" />  
+		    <p:ajax event="active" listener="#{IdleMonitorController.activeListener}" update="messages" />  
+		</p:idleMonitor>
+
+		<p:notificationBar position="bottom" effect="slide" widgetVar="bar" styleClass="notifier">
+			<f:facet name="header">
+				<h:outputText value="Account User(s)" />
+			</f:facet>
+			<f:facet name="footer">
+				<h:outputText value="Account User(s)" />
+			</f:facet>
+			
+		    <p:messages showDetail="false" autoUpdate="true" escape="true" rendered="true"/>
+		    <center>
+		    	<p:commandButton value="Close" onclick="bar.hide()" type="button" />
+		    </center>  
+		</p:notificationBar>  
+		
+		<p:layout fullPage="true" id="oLayout" widgetVar="oLayoutVar">
+			<p:layoutUnit position="north" size="#{north_size}" rendered="#{north_unit}" resizable="false" 
+				slidable="false" gutter="0" scrollable="false">
+
+				<p:toolbar>
+					<p:toolbarGroup align="left" style="display:'';" rendered="true">
+						<h:panelGrid columns="2" rendered="true">
+							<!--
+							<ui:include src="/templates/common/navigator.xhtml" />
+							<ui:include src="/templates/common/menumatic.xhtml" />
+							 -->
+						</h:panelGrid>
+						
+						<ui:insert name="app-menu" />
+						
+					</p:toolbarGroup>
+
+					<p:toolbarGroup align="right">
+						<h:outputText value="ESuite Solutions" class="logo"/><br/>
+						<h:outputText value="HORIZON - Unplugged Version" class="logotag"/>
+					</p:toolbarGroup>
+				</p:toolbar>
+				
+			</p:layoutUnit>
+			
+			<p:layoutUnit position="south" size="#{south_size}" rendered="#{south_unit}" gutter="0">
+				<ui:include src="/templates/common/footer.xhtml" />
+			</p:layoutUnit>
+			
+			<p:layoutUnit position="west" size="#{west_size}" rendered="#{west_unit}" gutter="0">
+			<!-- 
+				<ui:include src="/templates/common/navigator-all.xhtml">
+					<ui:param name="_type" value="Inline1"/>
+				</ui:include>
+				
+				<ui:include src="/templates/common/navigator-all.xhtml">
+					<ui:param name="_type" value="Expanded1"/>
+				</ui:include>
+			 -->	
+				<ui:include src="/templates/common/navigator-all.xhtml">
+					<ui:param name="_type" value="Accordion"/>
+				</ui:include>
+			</p:layoutUnit>
+			
+			<p:layoutUnit position="east" size="#{east_size}" rendered="#{east_unit}" resizable="true" gutter="0">
+				<ui:insert name="right-content"></ui:insert>
+			</p:layoutUnit>
+			
+			<p:layoutUnit position="center" gutter="0" slidable="false" style="padding:0;">
+
+				<p:layout rendered="#{ilayout}">
+					<p:layoutUnit position="north" size="#{inorth_size}" rendered="#{inorth_unit}">						
+					</p:layoutUnit>
+					
+					<p:layoutUnit position="south" size="#{isouth_size}" rendered="#{isouth_unit}">
+						<ui:insert name="bottom-content"></ui:insert>
+					</p:layoutUnit>
+					
+					<p:layoutUnit position="west" size="#{iwest_size}" rendered="#{iwest_unit}">
+						<ui:insert name="left-content"></ui:insert>
+					</p:layoutUnit>
+					
+					<p:layoutUnit position="east" size="#{ieast_size}" rendered="#{ieast_unit}">
+						
+					</p:layoutUnit>
+
+					<p:layoutUnit position="center" slidable="false" style="padding:0;">
+
+						<p:outputPanel id="messages">
+							<!-- infoIcon="/images/logo/Windows_Live_Groups_logo.png" -->
+							<p:messages showDetail="false" autoUpdate="true" escape="true" rendered="false"/>
+							<p:growl life="3000"  showDetail="true" />
+						</p:outputPanel>
+						
+						<p:growl id="messages1" showDetail="true" sticky="true"  rendered="false" />
+						
+						<p:ajaxStatus onstart="plugBlock();" onsuccess="unplugBlock();" rendered="true"/>
+						<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();" rendered="false"/>
+						<p:ajaxStatus style="width:16px;height:16px;" rendered="false">  
+						    <f:facet name="start">  
+						        <h:graphicImage value="/images/design/loading.gif" />  
+						    </f:facet>  
+						      
+						    <f:facet name="complete">  
+						        <h:outputText value="" />  
+						    </f:facet>  
+						</p:ajaxStatus>
+						
+						<p:graphicImage id="background" value="/images/logo/Windows_Live_Groups_logo.png" rendered="false" /> 
+						
+						
+						<!-- 
+						<ui:include src="/templates/common/appmenu.xhtml" />
+						 -->
+						 
+						<ui:insert name="content" />
+
+					</p:layoutUnit>
+				</p:layout>
+
+			</p:layoutUnit>
+		</p:layout>
+		
+		
+		<!-- header="Status" showEffect="bounce" hideEffect="bounce"-->
+		<p:dialog modal="true" widgetVar="statusDialog" header="Please wait ..."
+		        draggable="false" closable="false"  > 
+		    <p:graphicImage value="/images/design/loading.gif" />  
+		</p:dialog>
+		
+		
+
+		
+		<p:confirmDialog message="Are you sure about destroying the world?"  
+	                showEffect="bounce" hideEffect="explode"  
+	                header="Initiating destroy process" severity="alert" widgetVar="rdconfirmation">  
+	        <p:commandButton value="Yes Sure" update="messages" oncomplete="rdconfirmation.hide()"  
+	                    actionListener="#{FileExplorer.remove()}" />  
+	        <p:commandButton value="Not Yet" onclick="rdconfirmation.hide()" type="button" />   
+	                  
+	    </p:confirmDialog>
+		
+		
+	</h:form>	
+	
 	
 	</f:view>
 	</h:body>
