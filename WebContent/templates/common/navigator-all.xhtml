@@ -1,0 +1,104 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<h:panelGroup rendered="#{_type == 'Expanded'}">
+	<p:menu type="tiered" style="width:90%;height:98%;text-align:right;align:right;padding-left:10px;" rendered="true">
+		<ui:include src="navigation-all-items.xhtml"  />
+	</p:menu>
+	</h:panelGroup>
+	
+	<h:panelGroup rendered="#{_type == 'Inline'}">
+		<ul id="navigation" class="ui-widget">
+            <li class="home"><a href="#{request.contextPath}/" title="Home" class="ui-widget ui-widget-header ui-state ui-state-hover" ></a></li>
+            <li class="about"><a href="" title="About" class="ui-widget ui-widget-header ui-state ui-state-hover"></a></li>
+            <li class="search"><a href="" title="Search" class="ui-widget ui-widget-header ui-state ui-state-hover"></a></li>
+            <li class="photos"><a href="" title="Photos" class="ui-widget ui-widget-header ui-state ui-state-hover"></a></li>
+            <li class="rssfeed"><a href="" title="Rss Feed" class="ui-widget ui-widget-header ui-state ui-state-hover"></a></li>
+            <li class="podcasts"><a href="" title="Podcasts" class="ui-widget ui-widget-header ui-state ui-state-hover"></a></li>
+            <li class="contact"><a href="" title="Contact" class="ui-widget ui-widget-header ui-state ui-state-hover"></a></li>
+        </ul>
+	</h:panelGroup>
+	
+	<h:panelGroup rendered="#{_type == 'Accordion'}">
+
+		<p:accordionPanel autoHeight="true" effect="slide" activeIndex="#{UserBean.test}"
+			id="accordionComp#{_type}" height="100%" dynamic="false" cache="false" multiple="false">
+			
+			<p:tab title="Personalization" id="_personalization" rendered="false">
+			</p:tab>
+
+			<p:tab title="Application" id="_app#{_type}">
+
+<p:menu styleClass="acc_menu">
+
+	<p:menuitem value="Notification(s)" url="/notifications/"
+		icon="ui-icon ui-icon-contact"
+		rendered="#{UserBean.userTypeSecurityPriviledges.dashboard and UserBean.loggedIn}">
+		<f:setPropertyActionListener value="true" target="#{NotificationHandlerBean.clear}" />
+	</p:menuitem>
+			
+	<p:menuitem value="Dashboard" url="/dashboard/"
+		icon="ui-icon ui-icon-contact"
+		rendered="#{UserBean.userTypeSecurityPriviledges.dashboard and UserBean.loggedIn}" />
+		
+	<p:menuitem value="Report" url="/dashboard/"
+		icon="ui-icon ui-icon-contact"
+		rendered="#{UserBean.userTypeSecurityPriviledges.reportModule and UserBean.loggedIn}" />
+
+</p:menu>			
+			</p:tab>
+
+			<p:tab title="Customer Mgmt" id="_cmgmt#{_type}" rendered="false">
+			
+<p:menu styleClass="acc_menu">
+
+
+</p:menu>			
+			</p:tab>
+			<p:tab title="Sales Mgmt" id="_smgmt#{_type}">
+			
+<p:menu styleClass="acc_menu">
+
+	<p:menuitem value="Customers Corner" url="/customers/"
+		icon="ui-icon ui-icon-contact"
+		rendered="#{UserBean.userTypeSecurityPriviledges.salesMgmt and UserBean.loggedIn}">
+	</p:menuitem>
+
+	<p:menuitem value="Transactions Corner" url="/transactions/"
+		icon="ui-icon ui-icon-extlink"
+		rendered="#{UserBean.userTypeSecurityPriviledges.salesMgmt and UserBean.loggedIn}" />
+
+</p:menu>			
+		
+			</p:tab>
+			<p:tab title="Purchase Mgmt" id="_pmgmt#{_type}">
+			
+			<p:menu styleClass="acc_menu">
+			
+				<p:menuitem value="Vendors Corner" url="/vendors/"
+					icon="ui-icon ui-icon-contact"
+					rendered="#{UserBean.userTypeSecurityPriviledges.purchaseMgmt and UserBean.loggedIn}" />
+			
+				<p:menuitem value="Inventory Corner" url="/inventory/"
+					icon="ui-icon ui-icon-pin-s"
+					rendered="#{UserBean.userTypeSecurityPriviledges.purchaseMgmt and UserBean.loggedIn}" />
+			
+				<p:menuitem value="Notifications" url="/erp/inventory/notifications.html"
+					icon="ui-icon ui-icon-pin-s"
+					rendered="#{UserBean.userTypeSecurityPriviledges.purchaseMgmt and UserBean.loggedIn}" />
+			
+			</p:menu>
+			
+			</p:tab>
+		</p:accordionPanel>
+	</h:panelGroup>
+	
+	<!-- http://localhost:9090/esuite-solution-horizon/rep?p=/esuite/horizon/ACC-55-ID/demo/images/logo/demo
+	 -->
+	
+
+</ui:composition>

@@ -1,0 +1,64 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:menuitem value="Home" url="/" icon="ui-icon ui-icon-home"
+		rendered="#{theNav != 'dock'}" />
+	<p:menuitem value="Home" url="/" icon="/images/dock/home.png"
+		rendered="#{theNav == 'dock'}" />
+
+	<p:menuitem value="Preferences" url="/preferences/"
+		icon="ui-icon ui-icon-wrench" rendered="#{theNav != 'dock'}" />
+	<p:menuitem value="Preferences" url="/preferences/"
+		icon="ui-icon ui-icon-wrench" rendered="#{theNav == 'dock'}" />
+		
+	<p:menuitem value="Profile" url="/erp/account/user/profile.html"
+		icon="ui-icon ui-icon-wrench"  />
+
+	<p:menuitem value="Account Setup" url="/horizon/as/setup.html"
+		icon="ui-icon ui-icon-wrench" rendered="#{UserBean.loggedIn}"
+		action="#{UserBean.onAccountSetupTabChange}" ajax="false">
+		<f:setPropertyActionListener value="overview"
+			target="#{UserBean.userManager.accountManager.activeSetupTab}" />
+	</p:menuitem>
+	
+	<p:menuitem value="User Management" url="/erp/account/user/corner.html"
+		icon="ui-icon ui-icon-wrench" rendered="#{UserBean.loggedIn}"
+		action="#{UserBean.onAccountSetupTabChange}" ajax="false">
+		<f:setPropertyActionListener value="overview"
+			target="#{UserBean.userManager.accountManager.activeSetupTab}" />
+	</p:menuitem>
+
+	<p:menuitem value="Customers Corner" url="/customers/"
+		icon="ui-icon ui-icon-contact"
+		rendered="#{UserBean.accountServices.customerMgmt and UserBean.loggedIn}">
+	</p:menuitem>
+	<p:menuitem value="Customers Corner" url="/customers/"
+		icon="/images/icons/Profile.png"
+		rendered="#{UserBean.accountServices.customerMgmt and theNav == 'dock'}">
+		<h:outputText value="Customers Corner" />
+	</p:menuitem>
+
+	<p:menuitem value="Vendors Corner" url="/vendors/"
+		icon="ui-icon ui-icon-contact"
+		rendered="#{UserBean.accountServices.customerMgmt}" />
+	<p:menuitem value="Inventory Corner" url="/inventory/"
+		icon="ui-icon ui-icon-pin-s"
+		rendered="#{UserBean.accountServices.inventoryMgmt}" />
+	<p:menuitem value="Transactions Corner" url="/transactions/"
+		icon="ui-icon ui-icon-extlink"
+		rendered="#{UserBean.accountServices.invoiceMgmt}" />
+	
+	<p:menuitem value="Help" url="/" rendered="true"
+		icon="ui-icon ui-icon-help" />
+	<p:menuitem value="Logout" icon="ui-icon ui-icon-extlink"
+		action="#{UserBean.logout()}" ajax="false"
+		rendered="#{UserBean.loggedIn}" />
+	<p:menuitem value="Login" icon="ui-icon ui-icon-extlink"
+		url="/login/" ajax="false"
+		rendered="#{UserBean.loggedIn == false}" />
+
+
+</ui:composition>

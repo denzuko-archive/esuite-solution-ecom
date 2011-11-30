@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+            xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core"
+            xmlns:ui="http://java.sun.com/jsf/facelets"
+            xmlns:p="http://primefaces.org/ui">
+
+    <p:commandButton id="theme-action" value="Change Theme: #{Preferences.userPref.theme}" type="button"   styleClass="theme-button" image="ui-icon ui-icon-wrench"/>
+    <p:menu widgetVar="themeMenu" position="dynamic" trigger="theme-action" my="#{_my}" at="#{_at}" styleClass="theme-option">
+        <p:submenu label="Themes">
+            <p:menuitem value="Aristo" ajax="false"><f:setPropertyActionListener value="aristo" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Black-Tie" ajax="false"><f:setPropertyActionListener value="black-tie" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Blitzer" ajax="false"><f:setPropertyActionListener value="blitzer" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="BlueSky (RichFaces)" ajax="false"><f:setPropertyActionListener value="bluesky" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Casablanca (Trinidad)" ajax="false"><f:setPropertyActionListener value="casablanca" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Cupertino" ajax="false"><f:setPropertyActionListener value="cupertino" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Dark-Hive" ajax="false"><f:setPropertyActionListener value="dark-hive" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Dot-Luv" ajax="false"><f:setPropertyActionListener value="dot-luv" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Eggplant" ajax="false"><f:setPropertyActionListener value="eggplant" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Excite-Bike" ajax="false"><f:setPropertyActionListener value="excite-bike" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Flick" ajax="false"><f:setPropertyActionListener value="flick" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Glass-X (RichFaces)" ajax="false"><f:setPropertyActionListener value="glass-x" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Hot-Sneaks" ajax="false"><f:setPropertyActionListener value="hot-sneaks" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Humanity" ajax="false"><f:setPropertyActionListener value="humanity" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Le-Frog" ajax="false"><f:setPropertyActionListener value="le-frog" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Midnight (Wijmo)" ajax="false"><f:setPropertyActionListener value="midnight" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Mint-Choc" ajax="false"><f:setPropertyActionListener value="mint-choc" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Overcast" ajax="false"><f:setPropertyActionListener value="overcast" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Pepper-Grinder" ajax="false"><f:setPropertyActionListener value="pepper-grinder" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Redmond" ajax="false"><f:setPropertyActionListener value="redmond" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Rocket (Wijmo)" ajax="false"><f:setPropertyActionListener value="rocket" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Sam" ajax="false"><f:setPropertyActionListener value="sam" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Smoothness" ajax="false"><f:setPropertyActionListener value="smoothness" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="South-Street" ajax="false"><f:setPropertyActionListener value="south-street" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Start" ajax="false"><f:setPropertyActionListener value="start" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Sunny" ajax="false"><f:setPropertyActionListener value="sunny" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Swanky-Purse" ajax="false"><f:setPropertyActionListener value="swanky-purse" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Trontastic" ajax="false"><f:setPropertyActionListener value="trontastic" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="UI-Lightness" ajax="false"><f:setPropertyActionListener value="ui-lightness" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="UI-Darkness" ajax="false"><f:setPropertyActionListener value="ui-darkness" target="#{Preferences.userPref.theme}" /></p:menuitem>
+            <p:menuitem value="Vader" ajax="false"><f:setPropertyActionListener value="vader" target="#{Preferences.userPref.theme}" /></p:menuitem>
+        </p:submenu>
+    </p:menu>
+    
+</ui:composition>

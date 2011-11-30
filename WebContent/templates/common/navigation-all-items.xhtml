@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:menuitem value="Home" url="/" icon="ui-icon ui-icon-home" rendered="#{UserBean.loggedIn}" />
+
+	<p:menuitem value="Dashboard" url="/dashboard/"
+		icon="ui-icon ui-icon-contact"
+		rendered="#{UserBean.userTypeSecurityPriviledges.dashboard and UserBean.loggedIn}" />
+
+	<p:menuitem value="Notification(s)" url="/notifications/"
+		icon="ui-icon ui-icon-contact"
+		rendered="#{UserBean.userTypeSecurityPriviledges.dashboard and UserBean.loggedIn}">
+		<f:setPropertyActionListener value="true" target="#{NotificationHandlerBean.clear}" />
+	</p:menuitem>
+
+	<p:menuitem value="Customers Corner" url="/customers/"
+		icon="ui-icon ui-icon-contact"
+		rendered="#{UserBean.userTypeSecurityPriviledges.salesMgmt and UserBean.loggedIn}">
+	</p:menuitem>
+
+	<p:menuitem value="Vendors Corner" url="/vendors/"
+		icon="ui-icon ui-icon-contact"
+		rendered="#{UserBean.userTypeSecurityPriviledges.purchaseMgmt and UserBean.loggedIn}" />
+
+	<p:menuitem value="Inventory Corner" url="/inventory/"
+		icon="ui-icon ui-icon-pin-s"
+		rendered="#{UserBean.userTypeSecurityPriviledges.purchaseMgmt and UserBean.loggedIn}" />
+
+	<p:menuitem value="Transactions Corner" url="/transactions/"
+		icon="ui-icon ui-icon-extlink"
+		rendered="#{UserBean.userTypeSecurityPriviledges.salesMgmt and UserBean.loggedIn}" />
+
+	<p:menuitem value="Report" url="/dashboard/"
+		icon="ui-icon ui-icon-contact"
+		rendered="#{UserBean.userTypeSecurityPriviledges.reportModule and UserBean.loggedIn}" />
+
+</ui:composition>

@@ -1,0 +1,106 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+		<!-- IMPORTANT!!! Include the stylesheet *BEFORE* the JavaScript (necessary for Safari 3.1.1) -->
+		<link href="#{request.contextPath}/includes/plugins/kwicks/css/kwicks.css" rel="stylesheet" />
+		<script src="#{request.contextPath}/includes/plugins/kwicks/js/jquery.kwicks.js" />
+	
+		<!-- demo stuff -->
+		<style>
+			body { margin: 30px; }
+			.kwick1 { background: #53b388; }
+			.kwick2 { background: #5a69a9; }
+			.kwick3 { background: #c26468; }
+			.kwick4 { background: #bf7cc7; }
+			
+			#example2 li { 
+			  float: left; 
+			  width: 125px; 
+			  height: 100px; 
+			  margin-right: 5px;
+			} 
+			
+			#example2 .kwick1 { background: #53b388; } 
+			#example2 .kwick2 { background: #5a69a9; } 
+			#example2 .kwick3 { background: #c26468; } 
+			#example2 .kwick4 { background: #bf7cc7; margin-right: none; } 
+			#example2 .kwick1.active { background: #86e6bb; } 
+			#example2 .kwick2.active { background: #8d9cdc; } 
+			#example2 .kwick3.active { background: #f5979b; } 
+			#example2 .kwick4.active { background: #efaffa; }
+		</style>
+		<script>
+
+
+			$(function(){
+
+				$('.kwicks').kwicks({
+					duration: 100,   
+			        max: 200,  
+			        spacing:  0  
+			    });
+
+				$('#example2').kwicks({ 
+				  max: 205, 
+				  min: 100,
+				  duration: 1500, 
+				  easing: 'easeOutBounce'  
+				});
+
+				$('#demo').kwicks({
+
+					// *** Appearance ***
+					max          : null,         // The width or height of a fully expanded kwick element
+					min          : 10,           // The width or height of a fully collapsed kwick element
+					spacing      : 0,            // The width (in pixels) separating each kwick element
+
+					isVertical   : false,        // Kwicks will align vertically if true
+
+					sticky       : false,        // One kwick will always be expanded if true
+					defaultKwick : 0,            // The initially expanded kwick (if and only if sticky is true). zero based
+
+					activeClass  : 'active',     // Class added to active (open) kwick
+
+					// *** Interaction ***
+					event        : 'mouseenter', // The event that triggers the expand effect
+					eventClose   : 'mouseleave', // The event that triggers the collapse effect
+
+					// *** Functionality ***
+					duration     : 500,          // The number of milliseconds required for each animation to complete
+					easing       : 'swing',      // Custom animation easing (requires easing plugin if anything other than 'swing' or 'linear')
+
+					// *** Slideshow ***
+					showDuration : 2000,         // Slideshow duration
+					showNext     : 1,            // set to 1 for left-to-right, -1 for right-to-left or 0 for a random slide
+
+					// *** Callbacks ***
+					init         : function(kwick){}, // event called when the event occurs (click or mouseover)
+					expanding    : function(kwick){}, // event called before kwicks expanding animation begins
+					collapsing   : function(kwick){}, // event called before kwicks collapsing animation begins
+					completed    : function(kwick){}, // event called when animation completes
+					playing      : function(kwick){}, // event called when slideshow starts
+					paused       : function(kwick){}  // event called when slideshow ends
+
+				});
+
+			});
+		</script>
+	
+	<!--  
+	<ul id="example2" >
+		<li></li>
+		<li></li>
+	</ul>
+	-->
+	
+	 <ul class="kwicks">  
+	     <li id="kwick1"><a href="#">Home</a></li>  
+	     <li id="kwick2"><a href="#">Contact</a></li>  
+	     <li id="kwick3"><a href="#">Downloads</a></li>  
+	     <li id="kwick4"><a href="#">Search</a></li>  
+	 </ul>
+	
+</ui:composition>

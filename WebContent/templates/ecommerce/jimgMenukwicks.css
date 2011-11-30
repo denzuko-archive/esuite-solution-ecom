@@ -1,0 +1,39 @@
+
+.jimgMenu {
+	position:relative;
+	margin: 0px 0px 0px 50px;
+	padding: 0px;
+	width:475px;
+	height:200px;
+	overflow: hidden;
+}
+
+.jimgMenu ul {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	display: block;
+	height: 200px;
+	position: relative;
+	}
+	
+.jimgMenu ul li {
+	width: 95px;
+	float: left;
+	display: block;
+	overflow: hidden;
+}
+
+.jimgMenu ul li a {
+	text-indent: -1000px;
+	background:#fff repeat scroll 0%;
+	border-right: 2px solid #fff;
+	cursor:pointer;
+	display:block;
+	overflow: hidden;
+	height: 200px;
+}
+
+.clear {
+	clear: both;
+}

@@ -1,0 +1,94 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<style>
+.animated-menu ul{
+	margin:0;
+	padding:0;
+}
+
+.animated-menu li{
+	width:100px;
+	height:50px;
+	float:left;
+	color:#191919;
+	text-align:center;
+	overflow:hidden;
+}
+
+.animated-menu a{
+	color:#FFF;
+	text-decoration:none;
+}
+
+.animated-menu p{
+	padding:0px 5px;
+}
+
+.animated-menu .subtext{
+		padding-top:15px;
+		z-index: 9999;
+}
+
+
+/*Menu Color Classes*/
+.green{background:#6AA63B url('images/green-item-bg.jpg') top left no-repeat;}
+.yellow{background:#FBC700 url('images/yellow-item-bg.jpg') top left no-repeat;}
+.red{background:#D52100 url('images/red-item-bg.jpg') top left no-repeat;}
+.purple{background:#5122B4 url('images/purple-item-bg.jpg') top left no-repeat;}
+.blue{background:#0292C0 url('images/blue-item-bg.jpg') top left no-repeat;}
+
+</style>
+
+<script>
+
+$(document).ready(function(){
+	//Fix Errors - http://www.learningjquery.com/2009/01/quick-tip-prevent-animation-queue-buildup/
+	//Remove outline from links
+	$(".animated-menu  a").click(function(){
+		$(this).blur();
+	});
+	
+	//When mouse rolls over
+	$(".animated-menu li").mouseover(function(){
+		$(this).stop().animate({height:'150px'},{queue:false, duration:600, easing: 'easeOutBounce'})
+	});
+	
+	//When mouse is removed
+	$(".animated-menu li").mouseout(function(){
+		$(this).stop().animate({height:'50px'},{queue:false, duration:600, easing: 'easeOutBounce'})
+	});
+	
+});
+</script>
+	
+	<div class="animated-menu">
+	<ul> 
+		<li class="green"> 
+			<p><a href="#">Home</a></p> 
+			<p class="subtext">The front page</p> 
+		</li> 
+		<li class="yellow"> 
+			<p><a href="#">About</a></p> 
+			<p class="subtext">More info</p> 
+		</li> 
+		<li class="red"> 
+			<p><a href="#">Contact</a></p> 
+			<p class="subtext">Get in touch</p> 
+		</li> 
+		<li class="blue"> 
+			<p><a href="#">Submit</a></p> 
+			<p class="subtext">Send us your stuff!</p> 
+		</li> 
+		<li class="purple"> 
+			<p><a href="#">Terms</a></p> 
+			<p class="subtext">Legal things</p> 
+		</li> 
+	</ul> 
+	</div>
+	
+	
+</ui:composition>
