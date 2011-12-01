@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jstl/core"
+	template="/templates/#{Preferences.applicationPref.ecomTemplate}/main.xhtml">
+
+	<ui:define name="content">
+	
+		<p:dataGrid var="product" value="#{ProductDemo.products}" columns="2"  
+	        rows="10" paginator="true" effect="true"  
+	        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+	        rowsPerPageTemplate="9,12,15">  
+	          
+	        <p:column>  
+	            <p:panel style="text-align:left;">  
+	                <h:panelGrid columns="2" style="width:100%">
+	                	<p:graphicImage value="/images/products/#{product.id}.jpg" style="width:100px;height:100px" />
+	                	<h:panelGroup >
+	                		<h:panelGrid columns="1" style="width:100%">
+			                  	<h:outputText value="#{product.code}" styleClass="productCode ui-state ui-state-active"/>
+			                    <h:outputText value="#{product.name}" />
+			                    <h:outputText value="#{product.price} INR" />
+		                    </h:panelGrid>  
+	                	</h:panelGroup>  
+	                </h:panelGrid>  
+	            </p:panel>  
+	        </p:column>  
+	  
+	    </p:dataGrid>
+		
+		
+
+	</ui:define>
+	
+</ui:composition>
