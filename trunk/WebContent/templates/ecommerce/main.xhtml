@@ -76,14 +76,9 @@
 	<h:form id="appForm" prependId="false">
 	
 	<p:contextMenu>  
-        <p:menuitem value="Save" update="messages"  
-            actionListener="#{buttonBean.save}" icon="ui-icon ui-icon-disk"/>  
-        <p:menuitem value="Update" update="messages"  
-            actionListener="#{buttonBean.update}"  
-            icon="ui-icon ui-icon-arrowrefresh-1-w"/>  
-        <p:menuitem value="Delete" icon="ui-icon ui-icon-close"  
-            actionListener="#{buttonBean.delete}" ajax="false"/>  
-        <p:menuitem value="Homepage" url="/welcome.html" icon="ui-icon ui-icon-extlink"/>  
+        <p:menuitem value="Homepage" url="/welcome.html" icon="ui-icon ui-icon-home"/>  
+        <p:menuitem value="Show Cart" icon="ui-icon ui-icon-cart"  
+            actionListener="#{buttonBean.delete}" ajax="false"/>
     </p:contextMenu>
 		
 		<p:layout styleClass="main-layout" id="layout" fullPage="false">
@@ -132,8 +127,6 @@
 				    </p:toolbarGroup>
 				    
 				    <p:toolbarGroup align="right">
-				    
-				    	
 				    	<ui:include src="/templates/common/theme-options.xhtml">
 				    		<ui:param name="_my" value="left top"/>
 							<ui:param name="_at" value="left bottom"/>
@@ -142,10 +135,56 @@
 				  </p:toolbar>
 				  <br/>
 
-		    	<ui:include src="nivo-slider.xhtml" />
-		    	<ui:include src="img-scroller.xhtml" />
-		    	
-		    	<ui:insert name="content" />
+				  <h:panelGrid columns="3" columnClasses="appcols, appcols, appcols" style="width:100%;">
+				  	<h:panelGroup>
+				  		<br/><br/>
+				  		<p:selectOneMenu value="#{ProductDemo.vendor.id}" effect="drop">
+				  			<p:ajax event="change" listener="#{ProductDemo.changeVendor}" update="messages" />
+				  			  
+				            <f:selectItem itemLabel="Select Vendor" itemValue="" />  
+				            <f:selectItems value="#{ProductDemo.vendors}" var="v" 
+				            	itemValue="#{v.id}" itemLabel="#{v.name}" />
+				            	  
+				        </p:selectOneMenu> 
+				        <br/><br/>
+				  		
+				  		<h:outputText value="Categories" styleClass="ui-state ui-state-active"/>
+				  		<p:menu type="tiered">
+				  			 <p:menuitem value="Gift Items" update="messages"  />  
+				  			 <p:menuitem value="Cars" update="messages" />
+				  			 <p:menuitem value="Photographers" update="messages" />  
+				  		</p:menu>
+				  		
+				  		<h:outputText value="Top Vendors" styleClass="ui-state ui-state-active" />
+				  		<p:menu type="tiered">
+				  			 <p:menuitem value="Shoppers Stop" update="messages"  />  
+				  			 <p:menuitem value="Peter England" update="messages"  />
+				  		</p:menu>
+				  		
+				  		<h:outputText value="Top Brands" styleClass="ui-state ui-state-active" />
+				  		<p:menu type="tiered">
+				  			 <p:menuitem value="i10" update="messages" />  
+				  			 <p:menuitem value="Venhussen" update="messages" />
+				  			 <p:menuitem value="Photographers" update="messages" />  
+				  		</p:menu>
+				  		
+				  	</h:panelGroup>
+				  	
+				  	<h:panelGroup>
+				  		<ui:include src="nivo-slider.xhtml" />
+					  		<p:outputPanel id="messages">
+								<!-- infoIcon="/images/logo/Windows_Live_Groups_logo.png" -->
+								<p:messages showDetail="false" autoUpdate="true" escape="true" rendered="false"/>
+								<p:growl life="3000"  showDetail="true" />
+							</p:outputPanel>
+			  			<ui:insert name="content" />
+				  	</h:panelGroup>
+				  	
+				  	<h:panelGroup>
+				  		<ui:include src="img-scroller.xhtml" />
+				  	</h:panelGroup>
+				  		
+				  </h:panelGrid>
 		        
 		    </p:layoutUnit>  
 		</p:layout>

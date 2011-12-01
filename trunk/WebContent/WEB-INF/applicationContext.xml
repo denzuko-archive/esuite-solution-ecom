@@ -20,6 +20,13 @@
 	<!-- Include context files from different layers -->
 	<!-- ******************************************************************** -->
 	<import resource="classpath:ecom-solution-context.xml" />
-	
+	<!-- 	
+	<import resource="classpath:esuite.erp-security-context.xml" />
+	<import resource="classpath:esuite.erp-service-context.xml" />
+	<import resource="classpath:esuite.erp-dao-context.xml" />
+	<import resource="classpath:e-suite-erp-solution-context.xml" />
+	<import resource="classpath:e-suite-erp-solution-activiti-context.xml" />
+	<import resource="classpath:esuite-ecm-context.xml" />
+	 -->
 	
 </beans>
