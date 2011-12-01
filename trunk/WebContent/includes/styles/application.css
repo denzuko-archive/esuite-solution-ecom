@@ -129,14 +129,33 @@ img {
 	min-width: 5%;
 }
 
+.productCode {
+	text-align: center;
+	text-transform: capitalize;
+	font-weight: bolder; 	
+}
+
 .mymenu {
 	overflow: auto;
+}
+
+.appcols {
+	vertical-align: top;
+	border: 0px hidden transparent;
+	
+}
+
+.appcols50 {
+	vertical-align: top;
+	border: 0px hidden transparent;
+	width: 50%;
 }
 
 
 .main-layout {
 	min-width:400px;
-	min-height:1000px;
+	min-height:1100px;
+	max-height: 5000px;
 	padding-left: 100px;
 	padding-right: 100px;
 	padding-top: 0px;

@@ -47,3 +47,8 @@
  	overflow: auto;
  	width: 40%;
  }
+ 
+ .ui-state-active {
+ 	border: 0px hidden transparent;
+ 	
+ }
